@@ -36,6 +36,34 @@ public class KodePos
     }
 }
 
+public enum DoorState
+{
+    Terkunci,
+    Terbuka
+}
+
+public class DoorMachine
+{
+    private DoorState currentState;
+
+    public DoorMachine()
+    {
+        currentState = DoorState.Terkunci;
+    }
+
+    public void BukaPintu()
+    {
+        currentState = DoorState.Terbuka;
+        Console.WriteLine("Pintu tidak terkunci");
+    }
+
+    public void KunciPintu()
+    {
+        currentState = DoorState.Terkunci;
+        Console.WriteLine("Pintu terkunci");
+    }
+}
+
 class Program
 {
     static void Main(string[] args)
@@ -52,5 +80,9 @@ class Program
         kelurahan = "Cijaura";
         kodePos = kodePosObj.GetKodePos(kelurahan);
         Console.WriteLine($"Kode Pos {kelurahan}: {kodePos}");
+
+        DoorMachine doorMachine = new DoorMachine();
+        doorMachine.KunciPintu();
+        doorMachine.BukaPintu();
     }
 }
